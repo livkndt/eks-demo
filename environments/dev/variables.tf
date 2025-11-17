@@ -1,3 +1,13 @@
+variable "aws_account_id" {
+  description = "AWS account ID"
+  type        = string
+}
+
+variable "admin_username" {
+  description = "Admin username for EKS cluster access"
+  type        = string
+}
+
 variable "aws_region" {
   description = "AWS region"
   type        = string
@@ -58,8 +68,7 @@ variable "node_max_size" {
   default     = 3
 }
 
-variable "node_disk_size" {
-  description = "Node disk size in GB"
-  type        = number
-  default     = 20
+variable "endpoint_public_access_cidrs" {
+  description = "CIDR blocks allowed to access the EKS cluster endpoint"
+  type        = list(string)
 }

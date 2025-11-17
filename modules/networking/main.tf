@@ -15,6 +15,17 @@ module "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+  # Tags required for EKS
+  public_subnet_tags = {
+    "kubernetes.io/role/elb"                                               = "1"
+    "kubernetes.io/cluster/${var.project_name}-${var.environment}-cluster" = "shared"
+  }
+
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb"                                      = "1"
+    "kubernetes.io/cluster/${var.project_name}-${var.environment}-cluster" = "shared"
+  }
+
   tags = {
     Environment = var.environment
     Project     = var.project_name
