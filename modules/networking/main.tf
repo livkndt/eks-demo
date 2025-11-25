@@ -27,6 +27,7 @@ module "vpc" {
   }
 
   tags = {
+    "kubernetes.io/cluster/${var.project_name}-${var.environment}-cluster" = "shared"
     Environment = var.environment
     Project     = var.project_name
   }
